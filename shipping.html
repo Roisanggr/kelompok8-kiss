@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>PureGen - Checkout</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/vendor.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <header id="header" class="site-header border-bottom border-dark">
+      <!-- Navbar omitted for brevity -->
+    </header>
+    
+    <!-- Checkout Instructions and Order Submission -->
+    <section class="checkout-section">
+      <div class="container mt-5">
+        <h3 class="text-center mb-4">Konfirmasi Order</h3>
+        <ul class="list-group mb-4">
+          <li class="list-group-item">1. Admin mengecek pembayaran customer.</li>
+          <li class="list-group-item">2. Upload bukti pembayaran customer pada laman ini.</li>
+          <li class="list-group-item">3. Order sudah bisa dikirim melalui tombol shipping.</li>
+        </ul>
+
+        <!-- Back and Send Order Buttons -->
+        <div class="d-flex justify-content-center mb-4">
+            <a href="index(log).html" class="btn btn-secondary me-2">Back</a>
+            <button id="sendOrderBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#shippingModal">Shipping</button>
+          </div>
+          
+          <!-- Modal untuk Pesan Shipping -->
+          <div class="modal fade" id="shippingModal" tabindex="-1" aria-labelledby="shippingModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="shippingModalLabel">Shipping Confirmation</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Order terkonfirmasi, Terima Kasih.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <a href="index(adm).html" class="btn btn-primary">Go to Admin Page</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Tambahkan JavaScript Bootstrap jika belum ada -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+          
+
+        <!-- Upload Payment Proof Section -->
+        <div class="card shadow-lg p-4">
+          <h5 class="mb-3">Upload Bukti Pembayaran</h5>
+          <input type="file" id="paymentProof" class="form-control mb-3" accept="image/*" required>
+          <button id="uploadBtn" class="btn btn-success" onclick="uploadProof()">Upload Bukti Pembayaran</button>
+          <p id="uploadMessage" class="mt-3 text-success" style="display: none;">
+            Bukti pembayaran berhasil diupload. Anda tidak dapat mengunggah lagi sampai pesanan terverifikasi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="overflow-hidden padding-xlarge pb-0">
+      <!-- Footer content omitted for brevity -->
+    </footer>
+
+    <div id="footer-bottom">
+      <!-- Footer bottom content omitted for brevity -->
+    </div>
+
+    <!-- JavaScript to handle file upload -->
+    <script>
+      function uploadProof() {
+        const fileInput = document.getElementById("paymentProof");
+        const uploadBtn = document.getElementById("uploadBtn");
+        const uploadMessage = document.getElementById("uploadMessage");
+
+        if (fileInput.files.length === 0) {
+          alert("Silakan pilih file untuk diupload.");
+          return;
+        }
+
+        // Simulasi pengunggahan berhasil dan nonaktifkan tombol dan input
+        uploadMessage.style.display = "block";
+        fileInput.disabled = true;
+        uploadBtn.disabled = true;
+      }
+    </script>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
