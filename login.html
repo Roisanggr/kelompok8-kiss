@@ -19,60 +19,63 @@
     <script src="js/modernizr.js"></script>
   </head>
   <body>
-    <!-- SVG icons and header omitted for brevity -->
+    <!-- Logo and Title Section -->
+    <div class="container text-center mt-5">
+      <h1 style="font-family: 'Cormorant Upright', serif; color: #ff7f50; font-size: 3rem;">Welcome! My Lovely Customer</h1>
+      <p style="font-family: 'Cormorant Upright', serif; color: #ff7f50; letter-spacing: 0.2em;">Login for use our service</p>
+    </div>
 
     <section class="login-register">
       <div class="container mt-5">
         <div class="row justify-content-center align-items-center">
           <div class="col-md-6 d-none d-md-block">
-            <img src="images/login-register-banner.png" alt="Login/Register Banner" class="img-fluid">
+            <img src="images/login-register-banner.png" alt="Login Banner" class="img-fluid">
           </div>
 
-          <!-- Login/Register Form Section -->
+          <!-- Login Form Section -->
           <div class="col-md-6">
             <div class="card shadow-lg p-4">
-              <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="pills-login-tab" data-bs-toggle="pill" data-bs-target="#pills-login" type="button" role="tab" aria-controls="pills-login" aria-selected="true">Login</button>
+                  <button class="nav-link active" id="pills-customer-tab" data-bs-toggle="pill" data-bs-target="#pills-customer" type="button" role="tab" aria-controls="pills-customer" aria-selected="true">Customer</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-register-tab" data-bs-toggle="pill" data-bs-target="#pills-register" type="button" role="tab" aria-controls="pills-register" aria-selected="false">Register</button>
+                  <button class="nav-link" id="pills-admin-tab" data-bs-toggle="pill" data-bs-target="#pills-admin" type="button" role="tab" aria-controls="pills-admin" aria-selected="false">Admin</button>
                 </li>
               </ul>
               <div class="tab-content" id="pills-tabContent">
-                <!-- Login Form -->
-                <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="pills-login-tab">
-                  <form id="loginForm">
-                    <div class="mb-3">
-                      <label for="loginUsername" class="form-label">Username</label>
-                      <input type="text" class="form-control" id="loginUsername" placeholder="Enter your username">
-                    </div>
-                    <div class="mb-3">
-                      <label for="loginPassword" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
-                    </div>
-                    <button type="button" class="btn btn-primary w-100" onclick="validateLogin()">Login</button>
-                  </form>
-                </div>
+<!-- Customer Login Form -->
+<div class="tab-pane fade show active" id="pills-customer" role="tabpanel" aria-labelledby="pills-customer-tab">
+  <form action="login.php" method="POST">
+      <input type="hidden" name="role" value="customer">
+      <div class="mb-3">
+          <label for="customerUsername" class="form-label">Username</label>
+          <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="mb-3">
+          <label for="customerPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+  </form>
+</div>
 
-                <!-- Register Form -->
-                <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="pills-register-tab">
-                  <form onsubmit="showRegisterMessage(event)">
-                    <div class="mb-3">
-                      <label for="registerName" class="form-label">Full Name</label>
-                      <input type="text" class="form-control" id="registerName" placeholder="Enter your full name">
-                    </div>
-                    <div class="mb-3">
-                      <label for="registerEmail" class="form-label">Email address</label>
-                      <input type="email" class="form-control" id="registerEmail" placeholder="Enter your email">
-                    </div>
-                    <div class="mb-3">
-                      <label for="registerPassword" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="registerPassword" placeholder="Enter your password">
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
-                  </form>
-                </div>
+<!-- Admin Login Form -->
+<div class="tab-pane fade" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab">
+  <form action="login.php" method="POST">
+      <input type="hidden" name="role" value="admin">
+      <div class="mb-3">
+          <label for="adminUsername" class="form-label">Username</label>
+          <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
+      </div>
+      <div class="mb-3">
+          <label for="adminPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
+      </div>
+      <button type="submit" class="btn btn-warning w-100">Login</button>
+  </form>
+</div>
+
               </div>
             </div>
           </div>
@@ -80,52 +83,7 @@
       </div>
     </section>
 
-    <!-- Modal for Register Confirmation -->
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="registerModalLabel">Registration Confirmation</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            Hubungi nomor Admin (085691610764) ini untuk konfirmasi akun anda.
-          </div>
-          <div class="modal-footer">
-            <a href="index.html" class="btn btn-primary">Ok</a>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- JavaScript -->
-    <script>
-      function validateLogin() {
-        // Get the username and password values
-        const username = document.getElementById("loginUsername").value;
-        const password = document.getElementById("loginPassword").value;
-
-        // Check if the credentials match either "admin1" or "customer001"
-        if (username === "admin1" && password === "admin1") {
-          // Redirect admin user to "index(adm).html"
-          window.location.href = "index(adm).html";
-        } else if (username === "customer001" && password === "customer001") {
-          // Redirect customer user to "index(log).html"
-          window.location.href = "index(log).html";
-        } else {
-          // Show an alert if credentials are incorrect
-          alert("Invalid username or password. Please try again.");
-        }
-      }
-
-      function showRegisterMessage(event) {
-        // Prevent the form from submitting
-        event.preventDefault();
-        // Show the register modal
-        var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
-        registerModal.show();
-      }
-    </script>
     
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
